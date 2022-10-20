@@ -27,20 +27,17 @@
                         <asp:TextBox ID="TxtPassword" runat="server" TextMode="Password" ClientIDMode="Static"></asp:TextBox ></td>
                     <td />
                     <td>
-                    <asp:CheckBox ID="ckShowPass" runat="server" Text="Show password" onclick="myshowp(this)" /></td>
+                    <asp:CheckBox ID="ckShowPass" runat="server" Text="Show password" onclick="myFunction()" /></td>
                     <script>
-                         function myshowp() {
-                             ckbox = $('#ckShowPass')
-                             txtBox = $('#TxtPassword')
-
-                             if (ckbox.is(':checked')) {
-                                 txtBox.attr("Type", "Text");
-                             }
-                             else {
-                                 txtBox.attr("Type", "Password");
-                             }
-                         }
-                     </script>
+                        function myFunction() {
+                            var x = document.getElementById("TxtPassword");
+                            if (x.type === "password") {
+                                x.type = "text";
+                            } else {
+                                x.type = "password";
+                            }
+                        }
+                    </script>
                 </tr>
                 <tr>
                     <td >
