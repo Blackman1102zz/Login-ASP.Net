@@ -41,5 +41,10 @@ namespace Login
                 LitMsg.Text = "Sai tên đăng nhập hoặc Mật khẩu. Đề nghị nhập lại.";
             }
         }
+
+        protected void TxtPassword_TextChanged(object sender, EventArgs e)
+        {
+            
+        }
     }
 }

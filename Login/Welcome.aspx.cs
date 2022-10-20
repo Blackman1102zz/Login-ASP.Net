@@ -27,5 +27,10 @@ namespace Login
             Session.Abandon();
             Response.Redirect("Login.aspx");    
         }
+
+        protected void ButInfo_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("List.aspx");
+        }
     }
 }

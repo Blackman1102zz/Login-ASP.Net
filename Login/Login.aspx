@@ -8,20 +8,39 @@
 </head>
 <body>
     <form id="form1" runat="server">
-        <div>
-            <center>
+        <div class ="main">
+            <div class ="col-right">
+                <center>
                 <h1>Đăng nhập</h1>
                 <hr />
+                    <img src ="/images/photo1.png" asp-append-version="true" style="float:left"/>
                 <table>
+
                 <tr>
                     <td>Tài khoản </td>
                     <td>
-                        <asp:TextBox ID="TxtUsername" runat="server"></asp:TextBox></td>
+                        <asp:TextBox ID="TxtUsername" runat="server" ></asp:TextBox></td>
                 </tr>
                 <tr>
                     <td>Mật khẩu </td>
                     <td>
-                        <asp:TextBox ID="TxtPassword" runat="server"></asp:TextBox></td>
+                        <asp:TextBox ID="TxtPassword" runat="server" TextMode="Password" ClientIDMode="Static"></asp:TextBox ></td>
+                    <td />
+                    <td>
+                    <asp:CheckBox ID="ckShowPass" runat="server" Text="Show password" onclick="myshowp(this)" /></td>
+                    <script>
+                         function myshowp() {
+                             ckbox = $('#ckShowPass')
+                             txtBox = $('#TxtPassword')
+
+                             if (ckbox.is(':checked')) {
+                                 txtBox.attr("Type", "Text");
+                             }
+                             else {
+                                 txtBox.attr("Type", "Password");
+                             }
+                         }
+                     </script>
                 </tr>
                 <tr>
                     <td >
@@ -31,8 +50,9 @@
                 </tr>
                 </table>
             </center>
-            
+            </div>
         </div>
     </form>
 </body>
+
 </html>

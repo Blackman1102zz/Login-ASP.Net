@@ -10,7 +10,8 @@
     <form id="form1" runat="server">
         <div>
             <h1>Chào mừng <asp:Label ID="Labusrname" runat="server"></asp:Label></h1><br />
-            <asp:LinkButton ID="ButLogout" runat="server" OnClick="ButLogout_Click">Thoát</asp:LinkButton>
+            <asp:LinkButton ID="ButInfo" runat="server" OnClick="ButInfo_Click">Danh sách</asp:LinkButton><br />
+            <asp:LinkButton ID="ButLogout" runat="server" OnClick="ButLogout_Click">Thoát</asp:LinkButton><br />
         </div>
     </form>
 </body>
