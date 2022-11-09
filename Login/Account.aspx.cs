@@ -5,6 +5,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
+using System.Web.Caching;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
@@ -42,25 +43,29 @@ namespace Login
         {
             string mainconn = ConfigurationManager.ConnectionStrings["MyConnection"].ConnectionString;
             SqlConnection sqlconn = new SqlConnection(mainconn);
-            SqlCommand sqlcomm = new SqlCommand(@"INSERT INTO [dbo].[Account]
-           ([Taikhoan]
-           ,[Matkhau]
-           ,[Description])
-     VALUES
-           ('" + txtAcc.Text+"','"+txtPass.Text+"','"+txtDesc.Text+"')", sqlconn);
-            
-            sqlconn.Open();
-            sqlcomm.ExecuteNonQuery();
-            Response.Write("Thêm thành công");
-            sqlconn.Close();
+            using (SqlCommand sqlcomm = new SqlCommand(@"INSERT INTO [dbo].[Account]([Taikhoan],[Matkhau],[Description]) VALUES ('" + txtAcc.Text + "','" + txtPass.Text + "','" + txtDesc.Text + "')", sqlconn))
+            {
+
+                sqlconn.Open();
+
+                sqlcomm.ExecuteNonQuery();
+                Response.Write("Thêm thành công");
+                sqlconn.Close();
+
+            }
+            using (SqlCommand sqlcomm = new SqlCommand(@"INSERT INTO [dbo].[Account_Phone]([Phone]) VALUES ('" + txtPhone.Text + "')", sqlconn))
+            {
+                sqlconn.Open();
+                sqlcomm.ExecuteNonQuery();
+                sqlconn.Close();
+            }
         }
 
         protected void btnDelete_Click(object sender, EventArgs e)
         {
             string mainconn = ConfigurationManager.ConnectionStrings["MyConnection"].ConnectionString;
             SqlConnection sqlconn = new SqlConnection(mainconn);
-            SqlCommand sqlcomm = new SqlCommand(@"DELETE FROM [dbo].[Account]
-      WHERE [Taikhoan] = '" + txtAcc.Text+"'AND [Matkhau] ='"+txtPass.Text+"'" , sqlconn);
+            SqlCommand sqlcomm = new SqlCommand(@"DELETE FROM [dbo].[Account] WHERE [Taikhoan] = '" + txtAcc.Text+"'AND [Matkhau] ='"+txtPass.Text+"'" , sqlconn);
             sqlconn.Open();
             sqlcomm.ExecuteNonQuery();
             Response.Write("Xóa thành công");
