@@ -21,11 +21,11 @@ namespace Login
         {
             string mainconn = ConfigurationManager.ConnectionStrings["MyConnection"].ConnectionString;
             SqlConnection sqlconn = new SqlConnection(mainconn);
-            SqlCommand sqlcomm = new SqlCommand("select * from [dbo].[Login] where Taikhoan = @Taikhoan and Matkhau = @Matkhau", sqlconn);
+            SqlCommand sqlcomm = new SqlCommand("select * from [dbo].[Account] where Taikhoan = @Taikhoan and Matkhau = @Matkhau", sqlconn);
             sqlcomm.Parameters.AddWithValue("Taikhoan",TxtUsername.Text);
             sqlcomm.Parameters.AddWithValue("Matkhau", TxtPassword.Text);
-            SqlDataAdapter sda=new SqlDataAdapter(sqlcomm);
-            DataTable dt = new DataTable(); 
+            SqlDataAdapter sda = new SqlDataAdapter(sqlcomm);
+            DataTable dt = new DataTable();
             sda.Fill(dt);
             sqlconn.Open();
             sqlcomm.ExecuteNonQuery();

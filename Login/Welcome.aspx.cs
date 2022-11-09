@@ -30,7 +30,7 @@ namespace Login
 
         protected void ButInfo_Click(object sender, EventArgs e)
         {
-            Response.Redirect("List.aspx");
+            Response.Redirect("Account.aspx");
         }
     }
 }
