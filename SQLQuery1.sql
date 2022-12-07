@@ -27,10 +27,13 @@ VALUES('09797533983'),
 	  ('03215649823'),
 	  ('03677526473');
 
+	  select * from Account
 
 INSERT INTO Account(Account, Password, Description,CreatedPerson)
 values ('username' ,pwdencrypt('123'), 'userstatus' ,'systemright')
-select CONVERT(VARCHAR(32), HashBytes('MD5','admin123'), 2) as md5Hash
+select
+CONVERT(VARCHAR(32), HashBytes('MD5','admin123'), 2) as [Matkhau]
+from Account
 
 SELECT Account.Id, Account.Taikhoan, Account.Description, Account_Phone.Phone
 FROM Account, Account_Phone
